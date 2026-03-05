@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Kayıt Ol</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: url("{{ url_for('static', filename='bg.png') }}") no-repeat center center/cover;
+}
+
+.register-box{
+    width:400px;
+    padding:45px;
+    border-radius:25px;
+    backdrop-filter: blur(25px);
+    background: rgba(0,0,0,0.65);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    text-align:center;
+    color:white;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h2{
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+p{
+    font-size:14px;
+    margin-bottom:25px;
+    opacity:0.8;
+}
+
+.input-group{
+    position:relative;
+    margin:12px 0;
+}
+
+.input-group i{
+    position:absolute;
+    top:50%;
+    left:15px;
+    transform:translateY(-50%);
+    color:gray;
+}
+
+.input-group input{
+    width:100%;
+    padding:12px 12px 12px 40px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    background: rgba(255,255,255,0.08);
+    color:white;
+}
+
+.input-group input::placeholder{
+    color:rgba(255,255,255,0.6);
+}
+
+button{
+    width:100%;
+    padding:13px;
+    margin-top:18px;
+    border:none;
+    border-radius:12px;
+    background: linear-gradient(90deg,#ff0844,#ff4b2b);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #ff0844;
+}
+
+.link{
+    margin-top:18px;
+    font-size:14px;
+}
+
+.link a{
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.flash{
+    color:#ffcc00;
+    margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="register-box">
+    <h2>Hesap Oluştur</h2>
+    <p>Hemen ücretsiz kayıt ol</p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+
+        <div class="input-group">
+            <i class="fa fa-user"></i>
+            <input type="text" name="name" placeholder="Ad" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa fa-envelope"></i>
+            <input type="email" name="email" placeholder="E-posta" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa fa-lock"></i>
+            <input type="password" name="password" placeholder="Şifre" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa fa-lock"></i>
+            <input type="password" name="password2" placeholder="Şifre Tekrar" required>
+        </div>
+
+        <button type="submit">Kayıt Ol</button>
+
+    </form>
+
+    <div class="link">
+        Zaten hesabın var mı? <a href="{{ url_for('login') }}">Giriş Yap</a>
+    </div>
+
+</div>
+
+</body>
+</html>

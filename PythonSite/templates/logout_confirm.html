@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Çıkış Yap</title>
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: #fff;
+}
+.box {
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#yes { background-color: #ff4b5c; color: #fff; }
+#no { background-color: #4caf50; color: #fff; }
+button:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+<div class="box">
+    <h2>{{ name }}, çıkış yapmak istediğine emin misin?</h2>
+    <div>
+        <form action="{{ url_for('logout') }}" method="get" style="display:inline;">
+            <button type="submit" id="yes">Evet</button>
+        </form>
+        <form action="{{ url_for('dashboard') }}" method="get" style="display:inline;">
+            <button type="submit" id="no">Hayır</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

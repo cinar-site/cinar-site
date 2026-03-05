@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kod Doğrulama</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            background-image: url("{{ url_for('static', filename='bg.png') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .verify-box{
+            width:400px;
+            padding:45px;
+            border-radius:25px;
+            backdrop-filter: blur(25px);
+            background: rgba(0,0,0,0.75);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            text-align:center;
+            color:white;
+        }
+
+        h2{
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border:none;
+            border-radius:12px;
+            background: rgba(255,255,255,0.08);
+            color:white;
+            outline:none;
+        }
+
+        input::placeholder{
+            color:rgba(255,255,255,0.6);
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:20px;
+            border:none;
+            border-radius:12px;
+            background: linear-gradient(90deg,#00c6ff,#0072ff);
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            transform:scale(1.05);
+            box-shadow:0 0 20px #00c6ff;
+        }
+
+        .flash{
+            color:#ffcc00;
+            margin-bottom:15px;
+            list-style:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="verify-box">
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <h2>Mailinize Gelen Kodu Girin</h2>
+
+    <form method="POST">
+        <input type="text" name="code" placeholder="Doğrulama Kodu" required>
+        <button type="submit">Doğrula</button>
+    </form>
+
+</div>
+
+</body>
+</html>

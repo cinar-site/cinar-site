@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    margin: 0; padding: 0; 
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    height: 100vh;
+}
+
+h1 { 
+    color: #fff; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3); 
+    margin-bottom: 30px;
+}
+
+#settingsBtn {
+    background: #f1c40f;
+    color: black;
+    text-decoration: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 50px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+#settingsBtn:hover {
+    background: #d4ac0d;
+    transform: translateY(-2px);
+}
+</style>
+</head>
+<body>
+    <a href="{{ url_for('settings') }}" id="settingsBtn">⚙️ Ayarlar</a>
+    <h1>Hoşgeldiniz, {{ name }}!</h1>
+</body>
+</html>

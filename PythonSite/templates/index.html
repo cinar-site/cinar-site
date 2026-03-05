@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kayıt Mail Doğrulama</title>
+</head>
+<body>
+    <h2>Mailinizi girin</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <input type="email" name="email" placeholder="Gmail adresiniz" required>
+        <button type="submit">Kod Gönder</button>
+    </form>
+</body>
+</html>

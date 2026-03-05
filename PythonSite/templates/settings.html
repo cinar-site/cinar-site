@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Ayarlar</title>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 { color: #333; margin-bottom: 20px; }
+
+a, button {
+    text-decoration: none;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+a { background: #3498db; color: white; }
+a:hover { background: #2980b9; }
+
+button { background: #e74c3c; color: white; }
+button:hover { background: #c0392b; }
+</style>
+</head>
+<body>
+<h1>⚙️ Ayarlar, {{ name }}</h1>
+
+<a href="{{ url_for('dashboard') }}">← Dashboard'a Dön</a>
+<button onclick="alert('Profil düzenleme örneği')">Profil Düzenle</button>
+<button onclick="alert('Tema değiştir örneği')">Tema Değiştir</button>
+<button onclick="window.location.href='{{ url_for('logout') }}'">Çıkış Yap</button>
+</body>
+</html>
